@@ -1,0 +1,45 @@
+По умолчанию file = "1.txt"
+
+Были реализованы 2 вида функции - первая перенос по номеру строки(закомментирована), 2 - переносзаписа, 
+найденной по введенному значению: 
+
+# Функция для переноса по номеру записи:
+# def transfer_data(source: str, dest: str, num_row: int):
+#     """
+#     Функция для переноса указанной строки из одного файла в другой
+#     source: str - имя исходного файла
+#     dest: str - имя файла куда переносим
+#     num_row: int - номер переносимой строки
+#     """
+
+#     # with open(source, "r", encoding="utf-8") as file:
+#     #     list_1 = file.read().split("\n")
+#     # if num_row <= len(list_1):
+#     #     with open(dest, "a", encoding="utf-8") as data:
+#     #         data.write(list_1[num_row-1] + "\n")
+#     # else:
+#     #     print("Записи с таким номером нет в указанном файле")
+
+# Вызов функции для переноса по номеру записи:
+        # num_row = int(input("Введите номер записи: "))
+        # transfer_data(source, dest, num_row)
+
+
+
+# Функция для переноса записи, по найденному значению:
+def transfer_data(source: str, dest: str, record: str):
+    """
+    Функция для переноса указанной строки из одного файла в другой
+    source: str - имя исходного файла
+    dest: str - имя файла куда переносим
+    num_row: int - номер переносимой строки
+    """
+
+    with open(source, "r", encoding="utf-8") as file:
+        list_1 = file.read().split("\n")
+    rez = search_user(source, record)
+    if rez != 'По указанному значению совпадений не найдено':
+        with open(dest, "a", encoding="utf-8") as data:
+            data.write(rez + "\n")
+    else:
+        print(rez)
